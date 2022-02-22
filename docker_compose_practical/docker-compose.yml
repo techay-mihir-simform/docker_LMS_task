@@ -1,0 +1,16 @@
+#Docker-compose version
+version: '3.8'
+services:
+  #Container name
+  containerfirst:
+    build: .
+    #Image name which has created by build 
+    image: customnodeimage:latest
+    #Access website at 5000 port 
+    ports:
+      - 5000:5000
+    volumes:
+      - log_data:/app/logs
+    
+volumes:
+  log_data:
