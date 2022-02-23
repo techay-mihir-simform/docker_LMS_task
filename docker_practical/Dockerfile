@@ -7,11 +7,14 @@ RUN apk add --no-cache nodejs npm
 #Working directory is /app
 WORKDIR /app
 
-#Copy all code to /app folder
-COPY . /app
+#Copy packge file to app folder 
+COPY ./package*.json /app/
 
 #Install dependency 
 RUN npm install
+
+#Copy all code to /app folder
+COPY . /app
 
 #Expose port 
 EXPOSE 5000
@@ -19,7 +22,6 @@ EXPOSE 5000
 #env variable
 ENV ENV_NODE=production
 
-WORKDIR /app
 ENTRYPOINT ["node"]
 CMD ["server.js"]
 
